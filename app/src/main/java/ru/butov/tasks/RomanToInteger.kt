@@ -9,17 +9,15 @@ class RomanToInteger {
                 else
                     a.symbolToInt()
             }
-        val zipSum = buildList {
+        val zipPlusLast = buildList {
             addAll(zip)
             add(s.last().symbolToInt())
         }
-
-        val res = zipSum.reduce {
+        val res = zipPlusLast.reduce {
                 acc, i -> acc + i
             }
         return res
     }
-
 
     private fun Char.symbolToInt(): Int =
         when (this) {
