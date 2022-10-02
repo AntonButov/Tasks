@@ -4,7 +4,7 @@ class Sum {
 
     fun twoSum(numbers: List<Int>, target: Int): List<Int> {
 
-        val result: List<List<Int>> = numbers.mapIndexed { indexParent, elementParent ->
+        val result: List<List<Int>> = numbers.flatMapIndexed { indexParent, elementParent ->
 
             numbers
                 .subList(indexParent, numbers.size)
@@ -14,7 +14,7 @@ class Sum {
                 .filter { it[2] == target }
                 .map { listOf(it[0], it[1]) }
 
-        }.flatten()
+        }
 
         return result.flatten()
     }
