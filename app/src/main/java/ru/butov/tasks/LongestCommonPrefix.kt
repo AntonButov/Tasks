@@ -3,38 +3,18 @@ package ru.butov.tasks
 class LongestCommonPrefix {
 
     fun getLongest(source: List<String>): String {
-        val minLenth = source.min().count()
-        val firstWord = source.minBy { it.length }
-        return firstWord.mapIndexed { index, _ ->
-
-    }
-
-      private fun List<String>.prefixAll(prefix: String): Boolean  =
-          all {
-              it.substring(prefix.indices) == prefix
-          }
-
-
-
-
-
-
-        source.mapIndexed { index, _ ->
-            source.substring(index until source.count())
+        val shortestWord = source.minBy { it.length }
+        return shortestWord.asSequence().mapIndexed { index, _ ->
+            source.map {
+                it.substring(0, index )
+            }
+        }.filter { list ->
+            list.all { it == list.first() }
         }
-            .map { it.toLists() }
             .flatten()
-            .filter { isPalindromic(it) }
-            .maxBy { it.length }
+            .maxBy { it.count() }
     }
 
-    private fun isPalindromic(str: String): Boolean =
-        str == str.reversed()
-
-    private fun String.toLists(): List<String> =
-        mapIndexed { index, _ ->
-            substring(0..index)
-        }
 }
 
 
