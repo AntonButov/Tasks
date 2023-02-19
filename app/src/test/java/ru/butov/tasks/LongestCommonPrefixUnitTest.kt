@@ -22,4 +22,18 @@ class LongestCommonPrefixUnitTest {
         assertEquals(expected, longestCommonPrefix.getLongest(input))
     }
 
+    @Test
+    fun caseImperative() {
+        val input = listOf("flower","flow","flight")
+        val expected = "fl"
+        assertEquals(expected, longestCommonPrefix.getLongestImperative(input))
+    }
+
+    @Test
+    fun caseSecondImperative() {
+        val input = listOf("dog","racecar","car")
+        val expected = ""
+        assertEquals(expected, longestCommonPrefix.getLongestImperative(input))
+    }
+
 }
