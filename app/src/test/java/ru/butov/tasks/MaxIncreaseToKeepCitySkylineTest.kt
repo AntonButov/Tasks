@@ -5,7 +5,6 @@ import org.junit.Assert.*
 
 class MaxIncreaseToKeepCitySkylineTest {
 
-
     @Test
     fun caseFirst() {
         val input = listOf(
@@ -14,14 +13,15 @@ class MaxIncreaseToKeepCitySkylineTest {
             listOf(9, 2, 6, 3),
             listOf(0, 3, 1, 0)
         )
-        val producer = MaxIncreaseToKeepCitySkyline()
         val expected = listOf(
             listOf(8, 4, 8, 7),
             listOf(7, 4, 7, 7),
             listOf(9, 4, 8, 7),
             listOf(3, 3, 3, 3)
         )
-        val result = producer.increase(input)
+        val result = input.increase()
         assertEquals(result, expected)
+        val resultDiff = result.difference(input)
+        assertEquals(resultDiff, 35)
     }
 }
