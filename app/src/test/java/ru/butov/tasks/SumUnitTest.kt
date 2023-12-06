@@ -5,7 +5,6 @@ import org.junit.Assert.*
 
 class SumUnitTest {
 
-
     @Test
     fun case() {
         val sum = Sum()
