@@ -241,7 +241,7 @@ Example 5: Squares of a Sorted Array
 Given an integer array nums sorted in non-decreasing order, return an array of the squares of each 
 number sorted in non-decreasing order.
 
-Example 1:
+Example 7:
 
 Input: nums = [-4,-1,0,3,10]
 Output: [0,1,9,16,100]
@@ -251,3 +251,11 @@ Example 2:
 
 Input: nums = [-7,-3,2,3,11]
 Output: [4,9,9,49,121]
+
+example 8
+
+Operation backTrace
+Input: nums = [9, 3, 7]
+Target 13
+Try operation addition and subtraction. Last number had to the result of this.
+Example 9 - 3 = 7
