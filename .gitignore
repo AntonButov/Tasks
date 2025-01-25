@@ -13,5 +13,4 @@ Thumbs.db
 *.sublime-project
 
 /build/
-/app/build/
 /library/build/
