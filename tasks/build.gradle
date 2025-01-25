@@ -1,7 +1,9 @@
 plugins {
     id("org.jetbrains.kotlin.jvm")
+    id 'com.google.devtools.ksp'
 }
 
 dependencies {
+    ksp("io.github.antonbutov:ksp-processor:0.0.1")
     testImplementation 'junit:junit:4.13.2'
 }
