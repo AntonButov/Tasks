@@ -1,0 +1,17 @@
+.DS_Store
+Thumbs.db
+
+*.log
+*.tmp
+*.swp
+*.bak
+
+.idea/
+*.iml
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+/build/
+/app/build/
+/library/build/
