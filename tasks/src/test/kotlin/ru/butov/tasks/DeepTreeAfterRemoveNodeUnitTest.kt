@@ -2,8 +2,6 @@ package ru.butov.tasks
 
 import org.junit.Test
 import org.junit.Assert.*
-import ru.butov.tasks.height_of_binary_tree_after_subtree_removal_queries.Node
-import ru.butov.tasks.height_of_binary_tree_after_subtree_removal_queries.treeQueries
 
 class DeepTreeAfterRemoveNodeUnitTest {
 

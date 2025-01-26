@@ -1,6 +1,6 @@
 package ru.butov.tasks
 
-import ChangeCoinImpl
+import ChangeCoinDp
 import org.junit.Assert
 import org.junit.Test
 
@@ -11,6 +11,7 @@ class ChangeCoinTest {
         val coins =  listOf(1, 2, 5)
         val amount = 11
         val output = 3
-        Assert.assertEquals(output, ChangeCoinImpl(coins, amount).getChainWfs())
+        Assert.assertEquals(output, ChangeCoinDp().coinChange(coins.toIntArray(), amount))
+        //Assert.assertEquals(output, ChangeCoinImpl(coins, amount).getChainWfs())
     }
 }

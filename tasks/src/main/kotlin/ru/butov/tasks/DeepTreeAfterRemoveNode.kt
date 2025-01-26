@@ -1,4 +1,4 @@
-package ru.butov.tasks.height_of_binary_tree_after_subtree_removal_queries
+package ru.butov.tasks
 
 import kotlin.math.max
 
