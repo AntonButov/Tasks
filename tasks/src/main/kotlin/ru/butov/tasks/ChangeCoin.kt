@@ -5,10 +5,16 @@ interface ChangeCoin {
 }
 
 class ChangeCoinImpl(private val coins: List<Int>, private val amount: Int): ChangeCoin {
+
+    private var result = 0
+    private val queue = LinkedList<State>()
     override fun getChainWfs(): Int {
-        var result = 0
-        val queue = LinkedList<State>()
-        queue.add(State(0, coins))
+        getChainWfs(0, coins)
+        return result
+    }
+
+    private fun getChainWfs(startValue: Int,coins: List<Int>) {
+        queue.add(State(startValue, coins))
         do {
             val (startValueCurrent, coinsCurrent) = queue.removeFirst()
             if (coinsCurrent.size == 1) {
@@ -16,23 +22,23 @@ class ChangeCoinImpl(private val coins: List<Int>, private val amount: Int): Cha
                 if (startValueCurrent + coinCurrent < result) {
                     result = coinCurrent
                 }
-                continue
+            } else {
+                getChainWfs(startValue, coinsCurrent.subList(1, coinsCurrent.size))
             }
-            coinsCurrent.getStats(startValueCurrent).forEach {
+            coinsCurrent.getStates(startValueCurrent).forEach {
                 queue.add(State(it, coins.subList(1, coins.size)))
             }
         println(queue)
         } while (queue.isNotEmpty())
-        return result
     }
 
-    fun List<Int>.getStats(startValueCurrent: Int): List<Int> {
+    fun List<Int>.getStates(startValueCurrent: Int): List<Int> {
         println(this)
         var current = 0
         return buildList {
             while (startValueCurrent + current < amount) {
                 add(current)
-                current += this@getStats.first()
+                current += this@getStates.first()
             }
         }
     }
