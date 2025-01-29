@@ -292,7 +292,7 @@ Return the fewest number of coins that you need to make up that amount. If that 
 
 You may assume that you have an infinite number of each kind of coin.
 
-Example 1:
+Example 11:
 
 Input: coins = [1,2,5], amount = 11
 Output: 3
@@ -311,3 +311,13 @@ Constraints:
 1 <= coins.length <= 12
 1 <= coins[i] <= 231 - 1
 0 <= amount <= 104
+
+Example 12:
+
+You have full a full name as input and outputs the initials. Each word in the name should be represented by its first uppercase letter, followed by a dot (.). If a word contains a hyphen (-), the initials should include it.
+
+John Doe -> J.D.
+Alice Bob Carol -> A.B.C.
+Jean-Claude Van Damme -> J-C.V.D.
+Mary Jane Watson-Parker -> M.J.W-P.
+
