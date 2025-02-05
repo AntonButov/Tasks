@@ -321,3 +321,6 @@ Alice Bob Carol -> A.B.C.
 Jean-Claude Van Damme -> J-C.V.D.
 Mary Jane Watson-Parker -> M.J.W-P.
 
+example 13 SnackBack. There are n items with weights text{weights} = [w_1, w_2, ..., w_n] and a backpack with a capacity of W.  
+The goal is to select the maximum number of items such that their total weight does not exceed W. 
+
