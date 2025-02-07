@@ -1,7 +1,7 @@
 package ru.butov.tasks
 
 class CanJump {
-    fun isCunJump(nums: List<Int>): Boolean {
+    fun isJumpRecursive(nums: List<Int>): Boolean {
         if (nums[0] == 0) {
             return false
         }
@@ -11,7 +11,7 @@ class CanJump {
         val size: Int = nums.size
         if (size > 2) {
             val currentNums = nums.subList(nums[0], size)
-            return isCunJump(currentNums)
+            return isJumpRecursive(currentNums)
         }
         return false
     }

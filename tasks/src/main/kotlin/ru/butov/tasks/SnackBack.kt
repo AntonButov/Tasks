@@ -1,7 +1,5 @@
 package ru.butov.tasks
 
-import kotlin.math.max
-
 class SnackBack {
     fun getCount(weights: List<Int>, W: Int): Int {
         val n = weights.size
