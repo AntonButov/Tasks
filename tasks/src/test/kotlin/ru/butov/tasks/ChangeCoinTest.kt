@@ -12,6 +12,15 @@ class ChangeCoinTest {
         val amount = 11
         val output = 3
         Assert.assertEquals(output, ChangeCoinDp().coinChange(coins.toIntArray(), amount))
+        //Assert.assertEquals(output, ChangeCoinDp().getChainWfs())
+    }
+
+    @Test
+    fun secondCase() {
+        val coins =  listOf(5, 2, 1)
+        val amount = 11
+        val output = 3
+        Assert.assertEquals(output, ChangeCoinDp().coinChange(coins.toIntArray(), amount))
         //Assert.assertEquals(output, ChangeCoinImpl(coins, amount).getChainWfs())
     }
 }
