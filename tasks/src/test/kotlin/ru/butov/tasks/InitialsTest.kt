@@ -1,7 +1,6 @@
 package ru.butov.tasks
 
 import InitialsImpl
-import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class InitialsExtractorTest {

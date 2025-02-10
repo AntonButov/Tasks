@@ -5,8 +5,8 @@ class SnackBack {
         val n = weights.size
         val dp: MutableList<MutableList<Int>> = MutableList(n + 1) { MutableList(W + 1) { 0 } }
 
-        for (i in 1..n) {
-            for (w in 0..W) {
+        for (w in 0..W) {
+            for (i in 1..n) {
                 dp[i][w] = dp[i - 1][w]
                 if (w >= weights[i - 1]) {
                     dp[i][w] = maxOf(dp[i][w], dp[i - 1][w - weights[i - 1]] + 1)
@@ -18,11 +18,11 @@ class SnackBack {
     }
 
     fun getCountWithRepeat(weights: List<Int>, W: Int): Int {
-        val dp: MutableList<Int> = MutableList(W + 1 ) { 0 }
+        val dp: MutableList<Int> = MutableList(W + 1) { 0 }
         dp[0] = 0
-        for (w in 1 ..W) {
+        for (weight in weights) {
             println(dp)
-            for (weight in weights) {
+            for (w in 1..W) {
                 if (w >= weight) {
                     dp[w] = maxOf(dp[w], dp[w - weight] + 1)
                 }
