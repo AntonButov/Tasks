@@ -15,4 +15,5 @@ Thumbs.db
 /build/
 /library/build/
 gradle/
+/gradle/wrapper/
 /.gradle/
