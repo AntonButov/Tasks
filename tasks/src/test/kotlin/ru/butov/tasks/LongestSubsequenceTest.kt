@@ -19,4 +19,11 @@ class LongestSubsequenceTest {
         val result = LongestSubsequence().getCount(nums)
         Assert.assertEquals(4, result)
     }
+
+    @Test
+    fun thirdCase() {
+        val nums = listOf(0,3,1,3,2,3)
+        val result = LongestSubsequence().getCount(nums)
+        Assert.assertEquals(4, result)
+    }
 }
