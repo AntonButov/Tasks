@@ -2,6 +2,7 @@ package ru.butov.tasks
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import ru.butov.tasks.longestsubsequence.LongestSubstring
 
 class LongestSubstringUnitTest {
 
