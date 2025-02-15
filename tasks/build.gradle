@@ -1,9 +1,9 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm'
-  //  id 'com.google.devtools.ksp'
+  //  id 'com.google.devtools.ksp' version '1.9.24-1.0.20'
 }
 
 dependencies {
-  //  ksp("io.github.antonbutov:ksp-processor:0.0.1")
+  //  ksp("io.github.antonbutov:code-factory-processor:0.0.4")
     testImplementation 'junit:junit:4.13.2'
 }
