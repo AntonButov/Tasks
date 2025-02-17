@@ -19,4 +19,12 @@ class CanJump {
     private fun isFinalJump(nums: List<Int>): Boolean {
         return nums.size - nums[0] <= 1
     }
+
+    fun isJumpDynamic(nums: List<Int>) {
+        val dp = MutableList(nums.size) { false }
+        (nums.size - 1..0).forEachIndexed { index, num ->
+            dp[index] = num + index == nums.size - 1
+            println(dp)
+        }
+    }
 }
