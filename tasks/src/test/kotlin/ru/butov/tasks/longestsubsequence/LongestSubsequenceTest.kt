@@ -1,16 +1,17 @@
-package ru.butov.tasks
+package ru.butov.tasks.longestsubsequence
 
 import org.junit.Assert
 import org.junit.Test
-import ru.butov.tasks.longestsubsequence.LongestSubsequence
 
 class LongestSubsequenceTest {
 
     @Test
     fun firstCase() {
         val nums = listOf(10,9,2,5,3,7,101,18)
-        val result = LongestSubsequence().getCount(nums)
-        Assert.assertEquals(4, result)
+     //   val result = LongestSubsequence().getCount(nums)
+    //    Assert.assertEquals(4, result)
+        val resultTree = LongestSubstringTree().lengthOfLIS(nums.toIntArray())
+        Assert.assertEquals(4, resultTree)
     }
 
     @Test
