@@ -1,6 +1,6 @@
 # Tasks
 Logic tasks.
-1. Roman to Integer
+## 1. Roman to Integer
 Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 
 Symbol       Value
@@ -51,13 +51,13 @@ Constraints:
     It is guaranteed that s is a valid roman numeral in the range [1, 3999].
     
 
-2. Return indexes of element sum which equals terget.
+## 2. Return indexes of element sum which equals terget.
 
 Example: 
 { 2, 1, 11, 8, 7 } target = 9
 { 0, 4, 1, 3 }
  
-3. Longest substring.
+## 3. Longest substring.
 
 Given a string s, find the length of the longest substring without repeating characters.
 
@@ -80,7 +80,7 @@ Output: 3
 Explanation: The answer is "wke", with the length of 3.
 Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
-3a. Longest Increasing Subsequence 
+## 3a. Longest Increasing Subsequence 
 
 Given an integer array nums, return the length of the longest strictly increasing subsequence.
 A subsequence is a sequence that can be derived from the given sequence by deleting some or no elements without changing the relative order of the remaining characters.
@@ -96,11 +96,10 @@ Example 2:
 Input: nums = [0,3,1,3,2,3]
 Output: 4
 
-4. Given a string s, return the longest palindromic substring in s.
+## 4. Given a string s, return the longest palindromic substring in s.
 
 A string is called a palindrome string if the reverse of that string is the same as the original string.
 
- 
 
 Example 1:
 
@@ -113,7 +112,7 @@ Example 2:
 Input: s = "cbbd"
 Output: "bb"
 
-5. String to Integer (atoi)
+## 5. String to Integer (atoi)
 
 Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer (similar to C/C++'s atoi function).
 
@@ -132,7 +131,6 @@ Note:
     Do not ignore any characters other than the leading whitespace or the rest of the string after the digits.
 
  
-
 Example 1:
 
 Input: s = "42"
@@ -175,7 +173,7 @@ Step 3: "4193 with words" ("4193" is read in; reading stops because the next cha
 The parsed integer is 4193.
 Since 4193 is in the range [-231, 231 - 1], the final result is 4193.
 
-6. Container With Most Water    
+## 6. Container With Most Water    
 
 You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
 
@@ -184,8 +182,6 @@ Find two lines that together with the x-axis form a container, such that the con
 Return the maximum amount of water a container can store.
 
 Notice that you may not slant the container.
-
- 
 
 Example 1:
 
@@ -199,7 +195,7 @@ Input: height = [1,1]
 Output: 1
 
 
-6. 3Sum
+## 7. 3Sum
 Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 
 Notice that the solution set must not contain duplicate triplets.
@@ -228,6 +224,7 @@ Output: [[0,0,0]]
 Explanation: The only possible triplet sums up to 0.
 
 Example 4:
+
 There is a city composed of n x n blocks, where each block contains a single building shaped like a vertical square prism. You are given a 0-indexed n x n integer matrix grid where grid[r][c] represents the height of the building located in the block at row r and column c.
 
 A city's skyline is the the outer contour formed by all the building when viewing the side of the city from a distance. The skyline from each cardinal direction north, east, south, and west may be different.
@@ -276,7 +273,7 @@ Example 9 - 3 = 7
 
 example 9
 
-Jump Game
+## 8. Jump Game
 You are given an integer array nums. You are initially positioned at the array's first index, and each element in the array represents your maximum jump length at that position.
 Return true if you can reach the last index, or false otherwise.
 
@@ -288,7 +285,7 @@ Input: nums = [3,2,1,0,4]
 Output: false
 Explanation: You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index.
 
-example 10
+## 9. Robot
 
 There is a robot on an m x n grid. The robot is initially located at the top-left corner (i.e., grid[0][0]). The robot tries to move to the bottom-right corner (i.e., grid[m - 1][n - 1]). The robot can only move either down or right at any point in time.
 
@@ -298,15 +295,13 @@ The test cases are generated so that the answer will be less than or equal to 2 
 
 ![image](https://assets.leetcode.com/uploads/2018/10/22/robot_maze.png)
 
-example 11 Coin Change
+## 10. Coin Change
 
 You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money.
 
 Return the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
 
 You may assume that you have an infinite number of each kind of coin.
-
-Example 11:
 
 Input: coins = [1,2,5], amount = 11
 Output: 3
@@ -326,7 +321,7 @@ Constraints:
 1 <= coins[i] <= 231 - 1
 0 <= amount <= 104
 
-Example 12:
+## Inits
 
 You have full a full name as input and outputs the initials. Each word in the name should be represented by its first uppercase letter, followed by a dot (.). If a word contains a hyphen (-), the initials should include it.
 
