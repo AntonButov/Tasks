@@ -1,6 +1,6 @@
 package ru.butov.tasks
 
-// ## 3. Longest substring.
+// ## 2. Return indexes of element sum which equals terget.
 class Sum {
 
     fun twoSum(numbers: List<Int>, target: Int): List<Int> {
@@ -18,5 +18,20 @@ class Sum {
         }
 
         return result.flatten()
+    }
+
+    fun twoSumN(numbers: List<Int>, target: Int): List<Int> {
+        val hs = mutableMapOf<Int, Int>()
+        val result = mutableListOf<Int>()
+        numbers.forEachIndexed{ index, num ->
+            val firstNum = target - num
+            if (hs.contains(firstNum)) {
+                val indexFirstNum = hs[firstNum]!!
+                result.add(indexFirstNum)
+                result.add(index)
+            }
+            hs[num] = index
+        }
+        return result
     }
 }
