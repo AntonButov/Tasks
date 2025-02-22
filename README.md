@@ -321,7 +321,7 @@ Constraints:
 1 <= coins[i] <= 231 - 1
 0 <= amount <= 104
 
-## Inits
+## 11. Inits
 
 You have full a full name as input and outputs the initials. Each word in the name should be represented by its first uppercase letter, followed by a dot (.). If a word contains a hyphen (-), the initials should include it.
 
@@ -333,3 +333,27 @@ Mary Jane Watson-Parker -> M.J.W-P.
 example 13 SnackBack. There are n items with weights text{weights} = [w_1, w_2, ..., w_n] and a backpack with a capacity of W.  
 The goal is to select the maximum number of items such that their total weight does not exceed W. 
 
+## 12. Parentheses
+Problem Statement:
+Given a string s containing just the characters '(', ')', '{', '}', '[', and ']', determine if the input string is valid.
+
+A string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+Examples:
+
+```kotlin
+Копировать
+Редактировать
+isValid("()") // true
+isValid("()[]{}") // true
+isValid("(]") // false
+isValid("([)]") // false
+isValid("{[]}") // true
+```
+Constraints:
+
+1 <= s.length <= 10⁴
+s consists only of '(){}[]'.
