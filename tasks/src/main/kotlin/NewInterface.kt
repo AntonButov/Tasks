@@ -1,3 +1,0 @@
-interface NewInterface {
-    fun doSomeThink()
-}
