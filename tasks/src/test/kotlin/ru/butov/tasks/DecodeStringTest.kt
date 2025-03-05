@@ -24,11 +24,11 @@ class DecodeStringTest {
         val inputThird = "2[abc]3[cd]ef"
         val resultThird = "abcabccdcdcdef"
 
-        assertEquals(resultFirst, decodeString.decode(inputFirst))
+        assertEquals(resultFirst, decodeString.decodeRecursive(inputFirst))
         assertEquals(resultFirst, decodeStringQueue.decode(inputFirst))
-        assertEquals(resultSecond, decodeString.decode(inputSecond))
+        assertEquals(resultSecond, decodeString.decodeRecursive(inputSecond))
         assertEquals(resultSecond, decodeStringQueue.decode(inputSecond))
-        assertEquals(resultThird, decodeString.decode(inputThird))
+        assertEquals(resultThird, decodeString.decodeRecursive(inputThird))
         assertEquals(resultThird, decodeStringQueue.decode(inputThird))
     }
 
@@ -43,11 +43,11 @@ class DecodeStringTest {
         val inputThird = "6[a]"
         val resultThird = "aaaaaa"
 
-        assertEquals(resultFirst, decodeString.decode(inputFirst))
+        assertEquals(resultFirst, decodeString.decodeRecursive(inputFirst))
         assertEquals(resultFirst, decodeStringQueue.decode(inputFirst))
-        assertEquals(resultSecond, decodeString.decode(inputSecond))
+        assertEquals(resultSecond, decodeString.decodeRecursive(inputSecond))
         assertEquals(resultSecond, decodeStringQueue.decode(inputSecond))
-        assertEquals(resultThird, decodeString.decode(inputThird))
+        assertEquals(resultThird, decodeString.decodeRecursive(inputThird))
         assertEquals(resultThird, decodeStringQueue.decode(inputThird))
     }
 
@@ -59,12 +59,12 @@ class DecodeStringTest {
         val inputSecond = "abc"
         val resultSecond = "abc"
 
-        // val inputThird = "10[z]"
+        // val inputThird = "10[z]" I don`t wont consider it case
         // val resultThird = "zzzzzzzzzz"
 
-        assertEquals(resultFirst, decodeString.decode(inputFirst))
+        assertEquals(resultFirst, decodeString.decodeRecursive(inputFirst))
         assertEquals(resultFirst, decodeStringQueue.decode(inputFirst))
-        assertEquals(resultSecond, decodeString.decode(inputSecond))
+        assertEquals(resultSecond, decodeString.decodeRecursive(inputSecond))
         assertEquals(resultSecond, decodeStringQueue.decode(inputSecond))
         // assertEquals(resultThird, decodeString.decode(inputThird))
     }
