@@ -6,6 +6,23 @@ interface WaterContainer {
     fun getMaxWater(input: List<Int>): Int
 }
 
+class WaterContainerImpl: WaterContainer {
+    override fun getMaxWater(input: List<Int>): Int {
+        var maxWater = 0
+        var left = 0
+        var right = input.size - 1
+        while (left < right) {
+            maxWater = kotlin.math.max(maxWater, kotlin.math.min(input[left], input[right]) * (right - left))
+            if (input[left] < input[right]) {
+                left++
+            } else {
+                right--
+            }
+        }
+        return maxWater
+    }
+}
+/* // my solution wrong and ineffective
 class WaterContainerImp : WaterContainer {
     private val dp = mutableListOf<Chunk>()
     private var maxS = 0
@@ -39,3 +56,4 @@ class WaterContainerImp : WaterContainer {
     )
 
 }
+*/
