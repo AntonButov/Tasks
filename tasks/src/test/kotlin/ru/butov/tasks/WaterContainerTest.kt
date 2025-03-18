@@ -5,7 +5,7 @@ import org.junit.Test
 
 class WaterContainerTest {
 
-    private val waterContainer: WaterContainer = WaterContainerImp()
+    private val waterContainer: WaterContainer = WaterContainerImpl()
 
     @Test
     fun testExample1() {
@@ -42,7 +42,7 @@ class WaterContainerTest {
     @Test
     fun testAllEqualHeights() {
         val input = listOf(1, 2, 3, 4, 5)
-        val expected = 4
+        val expected = 6
         val result = waterContainer.getMaxWater(input)
         assertEquals(expected, result)
     }
