@@ -1,4 +1,4 @@
-package ru.butov.tasks.longestsubsequence
+package ru.butov.tasks.longestsubstring
 
 class LongestSubstring {
 
