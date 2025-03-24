@@ -3,6 +3,7 @@ package ru.butov.tasks
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import ru.butov.tasks.longestsubstring.LongestSubstring
+import ru.butov.tasks.longestsubstring.LongestSubstringChatGpt
 import ru.butov.tasks.longestsubstring.LongestSubstringSecond
 import ru.butov.tasks.longestsubstring.LongestSubstringThird
 
@@ -17,6 +18,9 @@ class LongestSubstringUnitTest {
     private val longestSubstringThird
     get() = LongestSubstringThird()
 
+    private val longestSubstringChatGpt
+        get() = LongestSubstringChatGpt()
+
     @Test
     fun caseFirst() {
         val s = "abcabcbb"
@@ -24,6 +28,7 @@ class LongestSubstringUnitTest {
         assertEquals(excepted, longestSubstring.getCount(s))
         assertEquals(excepted, longestSubstringSecond.getCount(s))
         assertEquals(excepted, longestSubstringThird.getCount(s))
+        assertEquals(excepted, longestSubstringChatGpt.getCount(s))
     }
 
     @Test
@@ -32,6 +37,8 @@ class LongestSubstringUnitTest {
         val excepted = 1
         assertEquals(excepted, longestSubstring.getCount(s))
         assertEquals(excepted, longestSubstringSecond.getCount(s))
+        assertEquals(excepted, longestSubstringThird.getCount(s))
+        assertEquals(excepted, longestSubstringChatGpt.getCount(s))
     }
 
     @Test
@@ -40,5 +47,7 @@ class LongestSubstringUnitTest {
         val excepted = 3
         assertEquals(excepted, longestSubstring.getCount(s))
         assertEquals(excepted, longestSubstringSecond.getCount(s))
+        assertEquals(excepted, longestSubstringThird.getCount(s))
+        assertEquals(excepted, longestSubstringChatGpt.getCount(s))
     }
 }
