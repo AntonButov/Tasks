@@ -10,9 +10,17 @@ class AddTwoNumbersUnitTest {
 
     @Test
     fun caseFirst() {
-        val listFirst = listOf(3,4,2)
-        val listSecond = listOf(4,6,5)
-        val expected = 807
+        val listFirst = listOf(2,4,3)
+        val listSecond = listOf(5,6,4)
+        val expected = listOf(7,0,8)
+        val test = addTwoNumbers.add(listFirst, listSecond)
+        assertEquals(test, expected)
+    }
+
+    fun caseSecond() {
+        val listFirst = listOf(9,9,9,9,9,9,9)
+        val listSecond = listOf(9,9,9,9)
+        val expected = listOf(8,9,9,9,0,0,0,1)
         val test = addTwoNumbers.add(listFirst, listSecond)
         assertEquals(test, expected)
     }
