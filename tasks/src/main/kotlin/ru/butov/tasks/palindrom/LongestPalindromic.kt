@@ -1,4 +1,4 @@
-package ru.butov.tasks
+package ru.butov.tasks.palindrom
 
 class LongestPalindromic {
 
