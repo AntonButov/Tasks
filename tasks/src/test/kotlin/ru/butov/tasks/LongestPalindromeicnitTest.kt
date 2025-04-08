@@ -127,6 +127,16 @@ class LongestPalindromicTest {
     }
 
     @Test
+    fun caseEght() {
+        val s = "abacdfgdcabba"
+        val expected = "abba"
+        assertEquals(expected, longestPalindromic.getLongest(s))
+        assertEquals(4, palindrom.getLongest(s))
+        assertEquals(4, palindromeMiddle.getLongest(s))
+        assertEquals(4, palindromeGpt.getLongest(s))
+    }
+
+    @Test
     fun caseEight_evenLength() {
         val s = "aabbaa"
         val expected = "aabbaa"
