@@ -14,6 +14,8 @@ class LongestPalindromicTest {
         get() = PalindromeMiddle()
     private val palindromeGpt: PalindromeGpt
         get() = PalindromeGptImpl()
+    private val palindromeManaker: PalindromeManaker
+    get() = PalindromeManakerImpl()
 
     @Test
     fun caseZero() {
@@ -23,6 +25,8 @@ class LongestPalindromicTest {
         assertEquals(3, palindrom.getLongest(s))
         assertEquals(3, palindromeMiddle.getLongest(s))
         assertEquals(3, palindromeGpt.getLongest(s))
+        assertEquals(3, palindromeManaker.getLongest(s))
+
     }
 
     @Test
@@ -33,6 +37,7 @@ class LongestPalindromicTest {
         assertEquals(5, palindrom.getLongest(s))
         assertEquals(5, palindromeMiddle.getLongest(s))
         assertEquals(5, palindromeGpt.getLongest(s))
+        assertEquals(5, palindromeManaker.getLongest(s))
     }
 
     @Test
@@ -43,6 +48,7 @@ class LongestPalindromicTest {
         assertEquals(3, palindrom.getLongest(s))
         assertEquals(3, palindromeMiddle.getLongest(s))
         assertEquals(3, palindromeGpt.getLongest(s))
+        assertEquals(3, palindromeManaker.getLongest(s))
     }
 
     @Test
@@ -53,6 +59,7 @@ class LongestPalindromicTest {
         assertEquals(2, palindrom.getLongest(s))
         assertEquals(2, palindromeMiddle.getLongest(s))
         assertEquals(2, palindromeGpt.getLongest(s))
+        assertEquals(2, palindromeManaker.getLongest(s))
     }
 
     @Test
@@ -63,6 +70,7 @@ class LongestPalindromicTest {
         assertEquals(2, palindrom.getLongest(s))
         assertEquals(2, palindromeMiddle.getLongest(s))
         assertEquals(2, palindromeGpt.getLongest(s))
+        assertEquals(2, palindromeManaker.getLongest(s))
     }
 
     @Test
@@ -73,6 +81,7 @@ class LongestPalindromicTest {
         assertEquals(3, palindrom.getLongest(s))
         assertEquals(3, palindromeMiddle.getLongest(s))
         assertEquals(3, palindromeGpt.getLongest(s))
+        assertEquals(3, palindromeManaker.getLongest(s))
     }
 
     @Test
@@ -83,6 +92,7 @@ class LongestPalindromicTest {
         assertEquals(3, palindrom.getLongest(s))
         assertEquals(3, palindromeMiddle.getLongest(s))
         assertEquals(3, palindromeGpt.getLongest(s))
+        assertEquals(3, palindromeManaker.getLongest(s))
     }
 
     @Test
@@ -93,6 +103,7 @@ class LongestPalindromicTest {
         assertEquals(4, palindrom.getLongest(s))
         assertEquals(4, palindromeMiddle.getLongest(s))
         assertEquals(4, palindromeGpt.getLongest(s))
+        assertEquals(4, palindromeManaker.getLongest(s))
     }
 
     @Test
@@ -103,6 +114,7 @@ class LongestPalindromicTest {
         assertEquals(5, palindrom.getLongest(s))
         assertEquals(5, palindromeMiddle.getLongest(s))
         assertEquals(5, palindromeGpt.getLongest(s))
+        assertEquals(5, palindromeManaker.getLongest(s))
     }
 
     //"racecar"
@@ -114,6 +126,7 @@ class LongestPalindromicTest {
         assertEquals(7, palindrom.getLongest(s))
         assertEquals(7, palindromeMiddle.getLongest(s))
         assertEquals(7, palindromeGpt.getLongest(s))
+        assertEquals(7, palindromeManaker.getLongest(s))
     }
 
     @Test
@@ -124,6 +137,7 @@ class LongestPalindromicTest {
         assertEquals(8, palindrom.getLongest(s))
         assertEquals(8, palindromeMiddle.getLongest(s))
         assertEquals(8, palindromeGpt.getLongest(s))
+        assertEquals(8, palindromeManaker.getLongest(s))
     }
 
     @Test
@@ -134,6 +148,7 @@ class LongestPalindromicTest {
         assertEquals(4, palindrom.getLongest(s))
         assertEquals(4, palindromeMiddle.getLongest(s))
         assertEquals(4, palindromeGpt.getLongest(s))
+        assertEquals(4, palindromeManaker.getLongest(s))
     }
 
     @Test
@@ -144,6 +159,7 @@ class LongestPalindromicTest {
         assertEquals(6, palindrom.getLongest(s))
         assertEquals(6, palindromeMiddle.getLongest(s))
         assertEquals(6, palindromeGpt.getLongest(s))
+        assertEquals(6, palindromeManaker.getLongest(s))
     }
 
     @Test
@@ -153,6 +169,7 @@ class LongestPalindromicTest {
         assertEquals(expected, longestPalindromic.getLongest(s))
         assertEquals(1, palindrom.getLongest(s))
         assertEquals(1, palindromeMiddle.getLongest(s))
+        assertEquals(1, palindromeManaker.getLongest(s))
     }
 
     @Test
@@ -162,6 +179,7 @@ class LongestPalindromicTest {
         assertEquals(expected.length, longestPalindromic.getLongest(s).length)
         assertEquals(1, palindrom.getLongest(s))
         assertEquals(1, palindromeMiddle.getLongest(s))
+        assertEquals(1, palindromeManaker.getLongest(s))
     }
 
     @Test
