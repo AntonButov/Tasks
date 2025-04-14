@@ -1,3 +1,5 @@
+package ru.butov.tasks.elegantobjects
+
 import kotlin.test.Test
 
 class BeImmutableSideEffectTest {
