@@ -4,33 +4,23 @@ interface SubArraySum {
     fun getNumSubArrays(input: List<Int>, k: Int): Int
 }
 
-class SubArraySumImpl() : SubArraySum {
+class SubArraySumGptSolutionImpl : SubArraySum {
     override fun getNumSubArrays(input: List<Int>, k: Int): Int {
-        if (input.isEmpty()) return 0
-        var result = 0
-        var firstIndex = 0
-        var secondIndex = 0
-        var currentSum = input[0]
-        while (true) {
-            when {
-                currentSum > k -> {
-                    currentSum -= input[firstIndex]
-                    ++firstIndex
-                }
+        var count = 0
+        var sum = 0
+        val preSum = mutableMapOf<Int, Int>()
+        preSum[0] = 1
 
-                currentSum == k -> {
-                    ++result
-                    currentSum -= input[firstIndex]
-                    ++firstIndex
-                }
-
-                currentSum < k -> {
-                    ++secondIndex
-                    if (secondIndex == input.size) return result
-                    currentSum += input[secondIndex]
-                }
+        for (i in input.indices) {
+            sum += input[i]
+            if (preSum.containsKey(sum - k)) {
+                println("sum - k = ${sum - k}")
+                count += preSum[sum - k] ?: 0
             }
-
+            preSum[sum] = preSum.getOrDefault(sum, 0) + 1
+            println("i = $i, input = ${input[i]}.  sum = $sum")
+            println(preSum)
         }
+        return count
     }
 }

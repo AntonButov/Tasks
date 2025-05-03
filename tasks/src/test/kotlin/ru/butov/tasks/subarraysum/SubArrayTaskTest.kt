@@ -6,7 +6,7 @@ import kotlin.test.assertEquals
 class SubArrayTaskTest {
 
        val subarraySum: SubArraySum
-           get() = SubArraySumImpl()
+           get() = SubArraySumGptSolutionImpl()
 
         @Test
         fun basicCase() {
@@ -37,5 +37,10 @@ class SubArrayTaskTest {
         fun mixedPositiveAndNegative() {
             assertEquals(4, subarraySum.getNumSubArrays(listOf(3,4,7,2,-3,1,4,2), 7))
         }
+
+       @Test
+       fun fromOntoFor() {
+            assertEquals(1, subarraySum.getNumSubArrays(listOf(1,2,3,4), 5))
+       }
     }
 
