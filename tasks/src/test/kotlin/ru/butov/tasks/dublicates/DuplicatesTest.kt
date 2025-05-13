@@ -1,7 +1,7 @@
 package ru.butov.tasks.dublicates
 
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import junit.framework.TestCase.assertEquals
+import org.junit.Test
 
 class DuplicatesTest {
 
