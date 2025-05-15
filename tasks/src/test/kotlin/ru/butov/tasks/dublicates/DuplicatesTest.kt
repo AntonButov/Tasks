@@ -5,7 +5,7 @@ import org.junit.Test
 
 class DuplicatesTest {
 
-    private val duplicates: Duplicates
+    val duplicates: Duplicates
         get() = DuplicatesImpl()
 
 
