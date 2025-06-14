@@ -16,7 +16,6 @@ class RemoveInPlaceImpl : RemoveKInPlace {
            input[i] = input[i + newI]
            i ++
        }
-
         return input
     }
 }
