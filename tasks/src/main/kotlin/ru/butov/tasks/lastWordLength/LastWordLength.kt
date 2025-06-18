@@ -25,3 +25,23 @@ class LastWordLengthImpl : LastWordLength {
         return length
     }
 }
+
+class LastWordLengthGptImpl : LastWordLength {
+    override fun length(s: String): Int {
+        var i = s.length - 1
+        var length = 0
+
+        // Пропускаем пробелы справа
+        while (i >= 0 && s[i] == ' ') {
+            i--
+        }
+
+        // Считаем длину последнего слова
+        while (i >= 0 && s[i] != ' ') {
+            length++
+            i--
+        }
+
+        return length
+    }
+}
