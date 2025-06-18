@@ -1,56 +1,57 @@
 package lastWordLength
 
-import ru.butov.tasks.lastWordLength.LastWordLength
+import org.junit.Assert.assertEquals
+import org.junit.Test
+import ru.butov.tasks.lastWordLength.LastWordLengthGptImpl
 import ru.butov.tasks.lastWordLength.LastWordLengthImpl
-import kotlin.test.Test
-import kotlin.test.assertEquals
 
 class LastWordLengthTest {
 
-        private val impl: LastWordLength = LastWordLengthImpl()
+    private val lastWordLengthImpl = LastWordLengthImpl()
+    private val lastWordLengthGptImpl = LastWordLengthGptImpl()
 
-        @Test
-        fun example1() {
-            assertEquals(5, impl.length("Hello World"))
-        }
+    @Test
+    fun testLength() {
+        val input = "Hello World"
+        val expected = 5
 
-        @Test
-        fun example2() {
-            assertEquals(4, impl.length("   fly me   to   the moon  "))
-        }
-
-        @Test
-        fun singleWord() {
-            assertEquals(6, impl.length("planet"))
-        }
-
-        @Test
-        fun trailingSpaces() {
-            assertEquals(6, impl.length("coding   "))
-        }
-
-        @Test
-        fun multipleSpacesBetweenWords() {
-            assertEquals(6, impl.length("I    enjoy   Kotlin"))
-        }
-
-        @Test
-        fun onlySpaces() {
-            assertEquals(0, impl.length("        "))
-        }
-
-        @Test
-        fun emptyString() {
-            assertEquals(0, impl.length(""))
-        }
-
-        @Test
-        fun singleCharWord() {
-            assertEquals(1, impl.length("a"))
-        }
-
-        @Test
-        fun punctuation() {
-            assertEquals(3, impl.length("go! to it."))
-        }
+        assertEquals(expected, lastWordLengthImpl.length(input))
+        assertEquals(expected, lastWordLengthGptImpl.length(input))
     }
+
+    @Test
+    fun testLengthWithTrailingSpaces() {
+        val input = "Hello World   "
+        val expected = 5
+
+        assertEquals(expected, lastWordLengthImpl.length(input))
+        assertEquals(expected, lastWordLengthGptImpl.length(input))
+    }
+
+    @Test
+    fun testLengthWithSingleWord() {
+        val input = "Hello"
+        val expected = 5
+
+        assertEquals(expected, lastWordLengthImpl.length(input))
+        assertEquals(expected, lastWordLengthGptImpl.length(input))
+    }
+
+    @Test
+    fun testLengthWithEmptyString() {
+        val input = ""
+        val expected = 0
+
+        assertEquals(expected, lastWordLengthImpl.length(input))
+        assertEquals(expected, lastWordLengthGptImpl.length(input))
+    }
+
+    @Test
+    fun testLengthWithSpacesOnly() {
+        val input = "     "
+        val expected = 0
+
+        assertEquals(expected, lastWordLengthImpl.length(input))
+        assertEquals(expected, lastWordLengthGptImpl.length(input))
+    }
+}
