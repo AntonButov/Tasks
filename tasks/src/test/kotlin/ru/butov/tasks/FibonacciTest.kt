@@ -1,7 +1,7 @@
 package ru.butov.tasks
 
+import org.junit.Assert.assertEquals
 import org.junit.Test
-import kotlin.test.assertEquals
 
 class FibonacciTest {
 
