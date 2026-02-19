@@ -3,6 +3,7 @@ package ru.butov.tasks.coroutines
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
@@ -44,5 +45,8 @@ class ExceptionHandlingTest {
         assertTrue(messages.contains("Caught ArithmeticException"))
         assertTrue(caughtArithmeticException)
         assertTrue(!messages.contains("Unreached"))
+
+        println("--- Логи выполнения ---")
+        messages.forEach { println(it) }
     }
 }
