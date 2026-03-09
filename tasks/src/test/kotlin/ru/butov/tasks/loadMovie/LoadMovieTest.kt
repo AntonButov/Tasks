@@ -12,14 +12,14 @@ import kotlin.test.assertEquals
 class LoadMovieTest {
 
     @Test
-    fun loadFast() = runBlocking {
+    fun loadFast() = runTest {
         val loadMovie = LoadMovieImpl(LoadService())
         val result = loadMovie.loadFast(listOf(3,2,1)).toList()
         assertEquals(listOf("movie1", "movie2", "movie3"), result)
     }
 
     @Test
-    fun loadAll() = runBlocking {
+    fun loadAll() = runTest {
         val loadMovie = LoadMovieImpl(LoadService())
         val result = loadMovie.loadByOrder(listOf(1,2,3)).toList()
         assertEquals(listOf("movie1", "movie2", "movie3"), result)
