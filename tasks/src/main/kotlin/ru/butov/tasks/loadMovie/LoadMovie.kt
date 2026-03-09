@@ -8,6 +8,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.flatMapMerge
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -15,6 +16,7 @@ import kotlinx.coroutines.flow.flowOn
 interface LoadMovie {
     fun loadFast(indexes: List<Int>): Flow<String>
     fun loadByOrder(indexes: List<Int>): Flow<String>
+    fun loadByOrderConcat(indexes: List<Int>): Flow<String>
 }
 
 class LoadService() {
@@ -40,6 +42,13 @@ class LoadMovieImpl(
             results.forEach { emit(it) }
         }
     }
+
+    override fun loadByOrderConcat(indexes: List<Int>): Flow<String> = indexes.asFlow()
+        .flatMapConcat { index ->
+            flow {
+                emit(loadService.loadById(index))
+            }
+        }
 }
 
 private fun Flow<Int>.fastesLoad(loadService: LoadService): Flow<String> =
