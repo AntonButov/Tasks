@@ -2,6 +2,8 @@ package ru.butov.tasks.loadMovie
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -25,23 +27,25 @@ class LoadService() {
 
 class LoadMovieImpl(
     private val loadService: LoadService,
-    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : LoadMovie {
     override fun loadFast(indexes: List<Int>): Flow<String> = indexes.asFlow()
         .fastesLoad(loadService)
 
 
-    override fun loadByOrder(indexes: List<Int>): Flow<String> = indexes.asFlow()
-        .fastesLoad(loadService)
-
+    override fun loadByOrder(indexes: List<Int>): Flow<String> = flow {
+        coroutineScope {
+            val results = indexes.map { index ->
+                async { loadService.loadById(index) }
+            }.awaitAll()
+            results.forEach { emit(it) }
+        }
+    }
 }
 
 private fun Flow<Int>.fastesLoad(loadService: LoadService): Flow<String> =
     this.flatMapMerge { index ->
         flow {
-            println("start index=$index")
             val result = loadService.loadById(index)
-            println("done index=$index result=$result")
             emit(result)
         }
     }

@@ -13,16 +13,15 @@ class LoadMovieTest {
 
     @Test
     fun loadFast() = runBlocking {
-        val loadMovie = LoadMovieImpl(LoadService(), Dispatchers.IO)
+        val loadMovie = LoadMovieImpl(LoadService())
         val result = loadMovie.loadFast(listOf(3,2,1)).toList()
-
         assertEquals(listOf("movie1", "movie2", "movie3"), result)
     }
 
     @Test
-    fun loadAll() = runTest {
+    fun loadAll() = runBlocking {
         val loadMovie = LoadMovieImpl(LoadService())
         val result = loadMovie.loadByOrder(listOf(1,2,3)).toList()
-     //   assertEquals(listOf("movie3", "movie2", "movie1"), result)
+        assertEquals(listOf("movie1", "movie2", "movie3"), result)
     }
 }
