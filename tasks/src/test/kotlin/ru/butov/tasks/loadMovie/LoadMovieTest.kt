@@ -21,14 +21,14 @@ class LoadMovieTest {
     @Test
     fun loadByOrder() = runTest {
         val loadMovie = LoadMovieImpl(LoadService())
-        val result = loadMovie.loadByOrder(listOf(3, 2, 1)).toList()
-        assertEquals(listOf("movie3", "movie2", "movie1"), result)
+        val result = loadMovie.loadByOrder(listOf(1, 2, 3)).toList()
+        assertEquals(listOf("movie1", "movie2", "movie3"), result)
     }
 
     @Test
     fun loadByOrderConcat() = runTest {
         val loadMovie = LoadMovieImpl(LoadService())
-        val result = loadMovie.loadByOrderConcat(listOf(3, 2, 1)).toList()
-        assertEquals(listOf("movie3", "movie2", "movie1"), result)
+        val result = loadMovie.loadByOrderConcat(listOf(1, 2, 3)).toList()
+        assertEquals(listOf("movie1", "movie2", "movie3"), result)
     }
 }
