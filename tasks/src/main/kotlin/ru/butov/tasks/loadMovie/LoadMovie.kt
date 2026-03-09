@@ -31,7 +31,12 @@ class LoadMovieImpl(
     private val loadService: LoadService,
 ) : LoadMovie {
     override fun loadFast(indexes: List<Int>): Flow<String> = indexes.asFlow()
-        .fastesLoad(loadService)
+        .flatMapMerge { index ->
+            flow {
+                val result = loadService.loadById(index)
+                emit(result)
+            }
+        }
 
 
     override fun loadByOrder(indexes: List<Int>): Flow<String> = flow {
@@ -50,12 +55,4 @@ class LoadMovieImpl(
             }
         }
 }
-
-private fun Flow<Int>.fastesLoad(loadService: LoadService): Flow<String> =
-    this.flatMapMerge { index ->
-        flow {
-            val result = loadService.loadById(index)
-            emit(result)
-        }
-    }
 
