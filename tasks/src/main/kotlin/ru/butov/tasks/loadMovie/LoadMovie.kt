@@ -2,6 +2,7 @@ package ru.butov.tasks.loadMovie
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
@@ -15,7 +16,7 @@ import kotlin.random.Random
 
 interface LoadMovie {
     fun loadFast(indexes: List<Int>): Flow<String>
-    fun loadAll(indexes: List<Int>): Flow<String>
+    fun loadAll(indexes: List<Int>): Flow<List<String>>
 }
 
 class LoadService() {
@@ -31,20 +32,25 @@ class LoadMovieImpl(
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : LoadMovie {
     override fun loadFast(indexes: List<Int>): Flow<String> = indexes.asFlow()
-        .flatMapMerge {
-            val result = loadService.loadById(it)
-            println("emit $it")
-            flowOf(result)
-        }.flowOn(dispatcher)
+        .flatMapMerge { index ->
+            flow {
+                println("start index=$index")
+                val result = loadService.loadById(index)
+                println("done index=$index result=$result")
+                emit(result)
+            }
+        }
 
 
-
-    override fun loadAll(indexes: List<Int>): Flow<String> = flow {
-        indexes.forEach {
-            val result = loadService.loadById(it)
-            println("emit $it")
-            emit(result)
+    override fun loadAll(indexes: List<Int>): Flow<List<String>> = flow {
+        coroutineScope {
+            indexes.forEach {
+                val result = loadService.loadById(it)
+                println("emit $it")
+              //  emit(result)
+            }
         }
     }
+
 }
 
