@@ -4,7 +4,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import kotlin.test.assertEquals
@@ -23,7 +22,7 @@ class LoadMovieTest {
     @Test
     fun loadAll() = runTest {
         val loadMovie = LoadMovieImpl(LoadService())
-        val result = loadMovie.loadAll(listOf(1,2,3)).toList()
+        val result = loadMovie.loadByOrder(listOf(1,2,3)).toList()
      //   assertEquals(listOf("movie3", "movie2", "movie1"), result)
     }
 }
