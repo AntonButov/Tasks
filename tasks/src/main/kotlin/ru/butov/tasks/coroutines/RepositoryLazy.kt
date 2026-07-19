@@ -13,9 +13,9 @@ class RepositoryLazy(
     private val backendApi: BackendApi,
     private val scope: CoroutineScope,
 ) {
-    private val deferred: Lazy<Deferred<String>> = lazy {
+    private val deferred: Deferred<String> by lazy {
         scope.async { backendApi.apiCall() }
     }
 
-    suspend fun apiCallOrCache(): String = deferred.value.await()
+    suspend fun apiCallOrCache(): String = deferred.await()
 }

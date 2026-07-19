@@ -1,6 +1,8 @@
 package ru.butov.tasks.coroutines
 
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -8,6 +10,7 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class RepositoryLazyTest {
 
@@ -51,6 +54,30 @@ class RepositoryLazyTest {
             }
         }
 
+        assertEquals(1, callCount.get())
+    }
+
+    @Test
+    fun concurrentAsyncCallsShareSameDeferred() = runBlocking {
+        val callCount = AtomicInteger(0)
+        val repository = RepositoryLazy(
+            backendApi = object : BackendApi {
+                override suspend fun apiCall(): String {
+                    callCount.incrementAndGet()
+                    delay(50)
+                    return "shared"
+                }
+            },
+            scope = this,
+        )
+
+        val results = coroutineScope {
+            List(50) {
+                async(Dispatchers.Default) { repository.apiCallOrCache() }
+            }.awaitAll()
+        }
+
+        assertTrue(results.all { it == "shared" })
         assertEquals(1, callCount.get())
     }
 }
