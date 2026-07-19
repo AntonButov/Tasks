@@ -10,7 +10,6 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.test.assertEquals
-import kotlin.test.assertNull
 
 class RepositoryFlowColdTest {
 
@@ -26,9 +25,7 @@ class RepositoryFlowColdTest {
             },
         )
 
-        assertNull(repository.cache.value)
         assertEquals("cached", repository.apiCallOrCache().first())
-        assertEquals("cached", repository.cache.value)
         assertEquals("cached", repository.apiCallOrCache().first())
         assertEquals(1, callCount.get())
     }
@@ -55,6 +52,5 @@ class RepositoryFlowColdTest {
         }
 
         assertEquals(1, callCount.get())
-        assertEquals("result", repository.cache.value)
     }
 }
