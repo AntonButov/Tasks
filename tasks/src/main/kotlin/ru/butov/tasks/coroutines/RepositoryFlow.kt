@@ -1,12 +1,11 @@
 package ru.butov.tasks.coroutines
 
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.stateIn
 
 interface BackendApiFlow {
     // very long call
@@ -14,24 +13,16 @@ interface BackendApiFlow {
 }
 
 // Сделать код-ревью и рефакторинг по необходимости
-class RepositoryFlow(private val backendApiFlow: BackendApiFlow) {
-    private val _cache = MutableStateFlow<String?>(null)
-    val cache = _cache.asStateFlow()
-    private val mutex = Mutex()
+class RepositoryFlow(
+    backendApiFlow: BackendApiFlow,
+    scope: CoroutineScope,
+) {
+    val cache: StateFlow<String?> = backendApiFlow.apiCall()
+        .stateIn(
+            scope = scope,
+            started = SharingStarted.Lazily,
+            initialValue = null,
+        )
 
-    fun apiCallOrCache(): Flow<String> = flow {
-        _cache.value?.let {
-            emit(it)
-            return@flow
-        }
-        mutex.withLock {
-            _cache.value?.let {
-                emit(it)
-                return@withLock
-            }
-            val value = backendApiFlow.apiCall().first()
-            _cache.value = value
-            emit(value)
-        }
-    }
+    fun apiCallOrCache(): Flow<String> = cache.filterNotNull()
 }

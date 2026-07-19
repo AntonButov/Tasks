@@ -17,12 +17,15 @@ class RepositoryFlowTest {
     @Test
     fun returnsCachedValueOnSecondCall() = runBlocking {
         val callCount = AtomicInteger(0)
-        val repository = RepositoryFlow(object : BackendApiFlow {
-            override fun apiCall() = flow {
-                callCount.incrementAndGet()
-                emit("cached")
-            }
-        })
+        val repository = RepositoryFlow(
+            backendApiFlow = object : BackendApiFlow {
+                override fun apiCall() = flow {
+                    callCount.incrementAndGet()
+                    emit("cached")
+                }
+            },
+            scope = this,
+        )
 
         assertNull(repository.cache.value)
         assertEquals("cached", repository.apiCallOrCache().first())
@@ -34,13 +37,16 @@ class RepositoryFlowTest {
     @Test
     fun concurrentCallsInvokeApiOnlyOnce() = runBlocking {
         val callCount = AtomicInteger(0)
-        val repository = RepositoryFlow(object : BackendApiFlow {
-            override fun apiCall() = flow {
-                callCount.incrementAndGet()
-                delay(50)
-                emit("result")
-            }
-        })
+        val repository = RepositoryFlow(
+            backendApiFlow = object : BackendApiFlow {
+                override fun apiCall() = flow {
+                    callCount.incrementAndGet()
+                    delay(50)
+                    emit("result")
+                }
+            },
+            scope = this,
+        )
 
         coroutineScope {
             repeat(100) {
