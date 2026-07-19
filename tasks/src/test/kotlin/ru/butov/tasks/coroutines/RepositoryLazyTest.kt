@@ -1,0 +1,56 @@
+package ru.butov.tasks.coroutines
+
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import org.junit.Test
+import java.util.concurrent.atomic.AtomicInteger
+import kotlin.test.assertEquals
+
+class RepositoryLazyTest {
+
+    @Test
+    fun returnsCachedValueOnSecondCall() = runBlocking {
+        val callCount = AtomicInteger(0)
+        val repository = RepositoryLazy(
+            backendApi = object : BackendApi {
+                override suspend fun apiCall(): String {
+                    callCount.incrementAndGet()
+                    return "cached"
+                }
+            },
+            scope = this,
+        )
+
+        assertEquals("cached", repository.apiCallOrCache())
+        assertEquals("cached", repository.apiCallOrCache())
+        assertEquals(1, callCount.get())
+    }
+
+    @Test
+    fun concurrentCallsInvokeApiOnlyOnce() = runBlocking {
+        val callCount = AtomicInteger(0)
+        val repository = RepositoryLazy(
+            backendApi = object : BackendApi {
+                override suspend fun apiCall(): String {
+                    callCount.incrementAndGet()
+                    delay(50)
+                    return "result"
+                }
+            },
+            scope = this,
+        )
+
+        coroutineScope {
+            repeat(100) {
+                launch(Dispatchers.Default) {
+                    assertEquals("result", repository.apiCallOrCache())
+                }
+            }
+        }
+
+        assertEquals(1, callCount.get())
+    }
+}
