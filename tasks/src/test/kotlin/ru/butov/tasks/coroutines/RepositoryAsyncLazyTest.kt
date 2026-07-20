@@ -24,7 +24,6 @@ class RepositoryAsyncLazyTest {
                     return "cached"
                 }
             },
-            scope = this,
         )
 
         assertEquals(0, callCount.get())
@@ -44,7 +43,6 @@ class RepositoryAsyncLazyTest {
                     return "result"
                 }
             },
-            scope = this,
         )
 
         coroutineScope {
@@ -69,7 +67,6 @@ class RepositoryAsyncLazyTest {
                     return "shared"
                 }
             },
-            scope = this,
         )
 
         val results = coroutineScope {
